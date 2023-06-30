@@ -1,0 +1,42 @@
+<?php
+
+use Illuminate\Support\Facades\Schema;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Database\Migrations\Migration;
+
+class CreateSiteLegals extends Migration
+{
+    /**
+     * Run the migrations.
+     *
+     * @return void
+     */
+    public function up()
+    {
+        Schema::create('site_legals', function (Blueprint $table) {
+            $table->id();
+            $table->unsignedBigInteger('author_id')->nullable();
+            $table->string('author_type')->nullable();
+            $table->string('page_name')->unique();
+            $table->string('slug')->unique();
+            $table->string('description')->nullable();
+            $table->text('content');
+            $table->string('status')->default('active');
+            $table->string('banner')->nullable();
+            $table->unsignedBigInteger('views')->default(0);
+            $table->unsignedBigInteger('clicks')->default(0);
+            $table->softDeletes();
+            $table->timestamps();
+        });
+    }
+
+    /**
+     * Reverse the migrations.
+     *
+     * @return void
+     */
+    public function down()
+    {
+        Schema::dropIfExists('site_legals');
+    }
+};
