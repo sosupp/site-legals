@@ -39,6 +39,11 @@ class SiteLegalCrudService
         return SiteLegal::where('id', $id)->first();
     }
 
+    public function list($status = 'active')
+    {
+        return SiteLegal::where('status', $status)->get();
+    }
+
     public function pages($status = 'active'): Collection|SupportCollection
     {
         return SiteLegal::where('status', $status)->get();
