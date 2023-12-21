@@ -1,0 +1,27 @@
+preset: package
+
+namespace: PySosu\SiteLegals
+user-auth-model: App\Models\User
+
+paths:
+  src: src
+  resource: resources
+
+factory:
+  path: database/factories
+
+migration:
+  path: database/migrations
+  prefix: ''
+
+console:
+  namespace: PySosu\SiteLegals\Console
+
+model:
+  namespace: PySosu\SiteLegals\Models
+
+provider:
+  namespace: PySosu\SiteLegals\Providers
+
+testing:
+  namespace: PySosu\SiteLegals\Tests

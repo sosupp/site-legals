@@ -1,5 +1,7 @@
 <?php
-namespace PySosu\SiteLegals\Custom;
+declare(strict_types=1);
+
+namespace PySosu\SiteLegals\Services;
 
 class LegalStatus
 {

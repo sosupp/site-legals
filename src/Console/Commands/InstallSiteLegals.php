@@ -1,5 +1,5 @@
 <?php
-namespace PySosu\SiteLegals\Console;
+namespace PySosu\SiteLegals\Console\Commands;
 
 use Illuminate\Console\Command;
 
@@ -24,4 +24,5 @@ class InstallSiteLegals extends Command
         $this->newLine();
         $this->info('SiteLegals Installed');
     }
+
 }

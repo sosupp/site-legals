@@ -1,9 +1,11 @@
 <?php
+declare(strict_types=1);
+
 namespace PySosu\SiteLegals;
 
 use Illuminate\Support\ServiceProvider;
 use PySosu\SiteLegals\Console\InstallSiteLegals;
-use PySosu\SiteLegals\Facades\SiteLegal;
+use PySosu\SiteLegals\Services\SiteLegals;
 
 class SiteLegalsServiceProvider extends ServiceProvider
 {
@@ -11,8 +13,8 @@ class SiteLegalsServiceProvider extends ServiceProvider
     {
         $this->mergeConfigFrom(__DIR__. '/../config/config.php', 'site_legals');
 
-        $this->app->bind('SiteLegal', function($app){
-            return new SiteLegal();
+        $this->app->bind('SiteLegals', function($app){
+            return new SiteLegals();
         });
     }
 
@@ -20,7 +22,7 @@ class SiteLegalsServiceProvider extends ServiceProvider
     {
         $this->loadRoutesFrom(__DIR__. '/../routes/web.php');
         $this->loadViewsFrom(__DIR__ . '/../resources/views', 'sitelegals');
-        $this->loadMigrationsFrom(__DIR__ . '/../database/migrations');
+        // $this->loadMigrationsFrom(__DIR__ . '/../database/migrations');
 
 
         if ($this->app->runningInConsole()){
@@ -29,13 +31,15 @@ class SiteLegalsServiceProvider extends ServiceProvider
             ], 'views');
 
             $this->publishes([
-                __DIR__. '/../config/config.php' => config_path('site_legals.php'),
+                __DIR__. '/../config/config.php' => config_path('sitelegals.php'),
             ], 'config');
 
-            $this->publishes([
-                __DIR__. '/../database/migrations/create_site_legals_table.php.stub' => database_path('migrations/' .date('Y_m_d_His', time()) . '_create_site_legals_table.php'),
-                
-            ], 'migrations');
+            if(! class_exists('CreateSiteLegalsTable')){
+                $this->publishes([
+                    __DIR__. '/../database/migrations/create_site_legals_table.php.stub' => database_path('migrations/' .date('Y_m_d_His', time()) . '_create_site_legals_table.php'),
+
+                ], 'migrations');
+            }
         }
     }
 
@@ -47,5 +51,5 @@ class SiteLegalsServiceProvider extends ServiceProvider
         ];
     }
 
-    
+
 }

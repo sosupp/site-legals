@@ -13,8 +13,8 @@ return [
     ],
 
     /**
-     * You can specify a route prefix. For example if you already have 
-     * defined routes for the admin dashboard, and you will want the CRUD 
+     * You can specify a route prefix. For example if you already have
+     * defined routes for the admin dashboard, and you will want the CRUD
      * for site legals to inherit that prefix, then you need to defined it here.
      * Default is dashboard
      */
@@ -22,7 +22,12 @@ return [
 
     /**
      * Middleware that will be use to protect the admin usage of the site legal CRUD.
-     * Default is auth 
+     * Default is auth
      */
     'middleware' => ['web'],
+
+    /**
+     * Use your own css
+    */
+    'custom_css_path' => '',
 ];

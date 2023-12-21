@@ -10,7 +10,7 @@ class SiteLegal extends Model
     use HasFactory, SoftDeletes;
 
     protected $fillable = [
-        'author_id', /* The admin user that created the site legal resource */
+        'author_id', /* The admin or user that created the site legal resource */
         'author_type',
         'page_name',
         'slug',
@@ -39,6 +39,11 @@ class SiteLegal extends Model
         // return $this->belongsTo(Admin::user);
     }
 
+    /**
+     * Here we use author since we do not know how your application
+     * will implement different types of users if needed. For example the 
+     * morphTo defined allows for any type of user model to be allowed (admin or user, etc)
+     */
     public function author()
     {
         return $this->morphTo();

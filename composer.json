@@ -1,6 +1,6 @@
 {
     "name": "sosupp/site-legals",
-    "description": "A laravel package for an easy and smooth integration of a CRUD based dashboard and public views for standard and legally require pages such as: About Us, Privacy Policy, Impressum, Imprint, Terms and Conditions, Disclaimer, Advertise, etc. This pacakge will be very suitable for many types of website that need to easily create and manage these information on their web apps. Blogs, News sites, Company websites, E-commerce, etc.",
+    "description": "A laravel package for easily including legally required pages such as: About Us, Privacy Policy, Impressum, Imprint, Terms and Conditions, Disclaimer, etc. No need to recreate models, CRUD functionalities. The package comes with the necessary classes, with drop-in UI for CRUDing these pages, and displaying them to the site users. Suitable for Blogs, News sites, Company websites, E-commerce, etc.",
     "type": "library",
     "license": "MIT",
     "autoload": {
@@ -16,11 +16,12 @@
     },
     "scripts": {
         "test": "vendor/bin/phpunit",
-        "test-f": "vendor/bin/phpunit --filter"
+        "test-f": "vendor/bin/phpunit --filter",
+        "artisan": "vendor/bin/canvas"
     },
     "authors": [
         {
-            "name": "Py Sosu",
+            "name": "Prosper Sosu",
             "email": "prospersosu@gmail.com"
         }
     ],
@@ -31,12 +32,17 @@
                 "PySosu\\SiteLegals\\SiteLegalsServiceProvider"
             ],
             "aliases": {
-                "SiteLegal": "PySosu\\SiteLegls\\Facades\\SiteLegal"
+                "SiteLegals": "PySosu\\SiteLegls\\Facades\\SiteLegal"
             }
         }
     },
     "require-dev": {
-        "phpunit/phpunit": "9.5.x-dev",
-        "orchestra/testbench": "^7.0"
+        "phpunit/phpunit": "10.4.1",
+        "orchestra/testbench": "^8.13.0",
+        "orchestra/canvas": "8.x-dev"
+    },
+    "require": {
+        "illuminate/support": "*",
+        "graham-campbell/markdown": "^15.0"
     }
 }
