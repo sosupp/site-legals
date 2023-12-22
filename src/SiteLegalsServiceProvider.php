@@ -5,6 +5,7 @@ namespace PySosu\SiteLegals;
 
 use Illuminate\Support\ServiceProvider;
 use PySosu\SiteLegals\Console\Commands\InstallSiteLegals;
+use PySosu\SiteLegals\Console\Commands\SeedDefaultData;
 use PySosu\SiteLegals\Services\SiteLegals;
 
 class SiteLegalsServiceProvider extends ServiceProvider
@@ -49,6 +50,7 @@ class SiteLegalsServiceProvider extends ServiceProvider
             // Artisan commands
             $this->commands([
                 InstallSiteLegals::class,
+                SeedDefaultData::class,
             ]);
         }
     }

@@ -34,6 +34,11 @@ class SiteLegalCrudService
         );
     }
 
+    public function makeMany(array $data)
+    {
+        return SiteLegal::upsert($data, []);
+    }
+
     public function one(int|string $id): SiteLegal
     {
         return SiteLegal::where('id', $id)->first();

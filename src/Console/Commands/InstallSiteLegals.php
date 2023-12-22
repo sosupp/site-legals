@@ -2,6 +2,7 @@
 namespace PySosu\SiteLegals\Console\Commands;
 
 use Illuminate\Console\Command;
+use PySosu\SiteLegals\Services\DefaultLegalsData;
 
 class InstallSiteLegals extends Command
 {
@@ -14,12 +15,15 @@ class InstallSiteLegals extends Command
         $this->info('Installing SiteLegals...');
         $this->newLine();
 
+        $this->info('==========================================');
         $this->info('Migrating SiteLegals table');
         $this->call('migrate');
+        $this->info('==========================================');
 
         if($this->option('with-data')){
             $this->info('Adding default site legals data to table');
             $this->seedDefaultData();
+            $this->info('==========================================');
             $this->newLine();
         }
 
@@ -27,15 +31,18 @@ class InstallSiteLegals extends Command
         $this->call('vendor:publish', [
             '--tag' => 'sitelegals-config',
         ]);
+        $this->info('==========================================');
 
-        $this->newLine();
         $this->info('SiteLegals Installed');
+        $this->info('==========================================');
     }
 
 
     private function seedDefaultData()
     {
+        $result = DefaultLegalsData::make();
 
+        $this->comment("$result pages of site legals added");
     }
 
 }
