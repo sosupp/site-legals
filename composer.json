@@ -44,6 +44,6 @@
     "require": {
         "illuminate/support": "*",
         "graham-campbell/markdown": "^15.0",
-        "erusev/parsedown": "dev-master"
+        "erusev/parsedown": "v2.0.0-beta-1"
     }
 }
