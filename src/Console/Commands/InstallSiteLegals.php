@@ -41,7 +41,6 @@ class InstallSiteLegals extends Command
     private function seedDefaultData()
     {
         $result = DefaultLegalsData::make();
-
         $this->comment("$result pages of site legals added");
     }
 

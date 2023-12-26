@@ -1,11 +1,19 @@
 # Impressum
 
-## Company information
+## Company/ Business information
+* Company legal full name here
+* Full business address 
+* VAT Number (if applicable)
+* TAX Number (if applicable)
+* Registration court and number (if applicable)
 
+## Representatives
+* Full name of owner or legal represenation or contact person on behalf of the company
 
-## Owner or representation
 
 ## Contact
+* Email addresses
+* Link to contact form (if applicable)
+* Phone or mobile number (if necessary)
 
-## EU dispute resolution
-The European Commission provides a platform for online dispute resolution (OS): (https://ec.europa.eu/consumers/odr) .You can find our email address in the legal notice above.
+

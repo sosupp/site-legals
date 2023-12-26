@@ -41,14 +41,18 @@ class SiteLegalCrudService
 
     public function one(int|string $id): SiteLegal
     {
-        return SiteLegal::where('id', $id)->first();
+        return SiteLegal::where('id', $id)
+        ->orWhere('slug', $id)
+        ->first();
     }
 
+    // To be used to show both active and inactive pages on admin dashboard
     public function list($status = 'active')
     {
-        return SiteLegal::where('status', $status)->get();
+        return SiteLegal::withTrashed()->get();
     }
 
+    // Intend to be used for public
     public function pages($status = 'active'): Collection|SupportCollection
     {
         return SiteLegal::where('status', $status)->get();
