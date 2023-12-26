@@ -46,10 +46,12 @@ class SiteLegalCrudService
         ->first();
     }
 
-    // To be used to show both active and inactive pages on admin dashboard
-    public function list($status = 'active')
+    // To be used to show both active, in-active and deleted pages on admin dashboard
+    public function list()
     {
-        return SiteLegal::withTrashed()->get();
+        return SiteLegal::query()
+        ->withTrashed()
+        ->get();
     }
 
     // Intend to be used for public
