@@ -25,7 +25,7 @@ class PreparePagesData
                 'page_name' => $page,
                 'slug' => Str::slug($page),
                 // 'content' => $this->parsedown->text(file_get_contents(__DIR__.'./Pages/'.$file['file'])),
-                'content' => Markdown::convert(file_get_contents(__DIR__.'./Pages/'.$file['file']))->getContent(),
+                'content' => Markdown::convert(file_get_contents(__DIR__.'/Pages/'.$file['file']))->getContent(),
             ];
         }
 

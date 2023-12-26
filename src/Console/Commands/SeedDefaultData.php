@@ -22,6 +22,7 @@ class SeedDefaultData extends Command
 
     private function seedDefaultData()
     {
+        // dd('yes');
         $result = DefaultLegalsData::make();
         $this->alert("$result pages of site legals added");
     }
