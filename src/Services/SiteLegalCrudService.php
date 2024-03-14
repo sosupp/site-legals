@@ -39,16 +39,22 @@ class SiteLegalCrudService
         return SiteLegal::upsert($data, []);
     }
 
-    public function one(int|string $id): SiteLegal
+    public function one(int|string $id): SiteLegal|null
     {
-        return SiteLegal::where('id', $id)->first();
+        return SiteLegal::where('id', $id)
+        ->orWhere('slug', $id)
+        ->first();
     }
 
-    public function list($status = 'active')
+    // To be used to show both active, in-active and deleted pages on admin dashboard
+    public function list()
     {
-        return SiteLegal::where('status', $status)->get();
+        return SiteLegal::query()
+        ->withTrashed()
+        ->get();
     }
 
+    // Intend to be used for public
     public function pages($status = 'active'): Collection|SupportCollection
     {
         return SiteLegal::where('status', $status)->get();

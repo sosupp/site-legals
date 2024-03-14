@@ -15,15 +15,15 @@ class SeedDefaultData extends Command
         $this->info('==========================================');
         $this->info('Adding default site legals data to table');
         $this->seedDefaultData();
-        $this->info('==========================================');
+        $this->alert('Site legal pages data added');
 
     }
 
 
     private function seedDefaultData()
     {
+        // dd('yes');
         $result = DefaultLegalsData::make();
-
-        $this->comment("$result pages of site legals added");
+        $this->alert("$result pages of site legals added");
     }
 }
