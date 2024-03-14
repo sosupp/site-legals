@@ -39,7 +39,7 @@ class SiteLegalCrudService
         return SiteLegal::upsert($data, []);
     }
 
-    public function one(int|string $id): SiteLegal
+    public function one(int|string $id): SiteLegal|null
     {
         return SiteLegal::where('id', $id)
         ->orWhere('slug', $id)
