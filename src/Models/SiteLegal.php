@@ -4,10 +4,11 @@ namespace PySosu\SiteLegals\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Sosupp\SlimDashboard\Concerns\Filters\CommonScopes;
 
 class SiteLegal extends Model
 {
-    use HasFactory, SoftDeletes;
+    use HasFactory, SoftDeletes, CommonScopes;
 
     protected $fillable = [
         'author_id', /* The admin or user that created the site legal resource */
@@ -41,7 +42,7 @@ class SiteLegal extends Model
 
     /**
      * Here we use author since we do not know how your application
-     * will implement different types of users if needed. For example the 
+     * will implement different types of users if needed. For example the
      * morphTo defined allows for any type of user model to be allowed (admin or user, etc)
      */
     public function author()

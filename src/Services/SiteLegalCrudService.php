@@ -3,13 +3,18 @@ declare(strict_types=1);
 
 namespace PySosu\SiteLegals\Services;
 
-use Illuminate\Database\Eloquent\Collection;
-use Illuminate\Support\Collection as SupportCollection;
 use Illuminate\Support\Str;
 use PySosu\SiteLegals\Models\SiteLegal;
+use Illuminate\Database\Eloquent\Collection;
+use Sosupp\SlimDashboard\Contracts\Crudable;
+use Illuminate\Support\Collection as SupportCollection;
+use Sosupp\SlimDashboard\Concerns\Filters\CommonFilters;
+use Sosupp\SlimDashboard\Concerns\Filters\WithDateFormat;
 
-class SiteLegalCrudService
+class SiteLegalCrudService implements Crudable
 {
+    use CommonFilters, WithDateFormat;
+
     private $legalPages = [];
 
     public function __construct()
@@ -17,7 +22,7 @@ class SiteLegalCrudService
         // $this->legalPages;
     }
 
-    public function make(int|string $id = null, array $data): SiteLegal
+    public function make(int|string|null $id = null, array $data): SiteLegal
     {
         return SiteLegal::updateOrCreate(
             [
@@ -47,12 +52,31 @@ class SiteLegalCrudService
     }
 
     // To be used to show both active, in-active and deleted pages on admin dashboard
-    public function list()
+    public function list(?int $limit = null, array $cols = ['*'])
     {
         return SiteLegal::query()
         ->withTrashed()
-        ->get();
+        ->when(!empty($this->searchTerm), function($q){
+            $q->search($this->searchTerm);
+        })
+        ->dated($this->selectedDate)
+        ->orderBy($this->orderByColumn, $this->orderByDirection)
+        ->get($cols);
     }
+
+    public function paginate(?int $limit = null, array $cols = ['*'])
+    {
+        return SiteLegal::query()
+        ->withTrashed()
+        ->when(!empty($this->searchTerm), function($q){
+            $q->search($this->searchTerm);
+        })
+        ->dated($this->selectedDate)
+        ->orderBy($this->orderByColumn, $this->orderByDirection)
+        ->paginate(perPage: $limit);
+    }
+
+    public function remove(int|string $id) { }
 
     // Intend to be used for public
     public function pages($status = 'active'): Collection|SupportCollection
