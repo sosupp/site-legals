@@ -1,6 +1,4 @@
-# Impressum
-
-## Company/ Business information
+## Business information
 * Company legal full name here
 * Full business address 
 * VAT Number (if applicable)

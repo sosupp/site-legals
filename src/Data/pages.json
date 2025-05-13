@@ -1,21 +1,12 @@
 {
-  "about us": {
-    "file": "about_us.md"
-  },
   "imprint": {
     "file": "imprint.md"
   },
   "privacy policy": {
     "file": "privacy_policy.md"
   },
-  "advertise with us": {
-    "file": "advertise.md"
-  },
   "cookies": {
     "file": "cookies.md"
-  },
-  "contact us": {
-    "file": "contact_us.md"
   },
   "terms of use": {
     "file": "terms_of_use.md"

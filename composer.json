@@ -50,8 +50,8 @@
     "orchestra/canvas": "8.x-dev"
   },
   "require": {
-    "php": "^7.4|^8.0|^8.1|^8.2",
-    "graham-campbell/markdown": "^15.0",
+    "php": "^7.4|^8.0|^8.1|^8.2|^8.3",
+    "graham-campbell/markdown": "^16.0",
     "illuminate/support": "*",
     "sosupp/slim-dashboard": "^1.24"
   }
