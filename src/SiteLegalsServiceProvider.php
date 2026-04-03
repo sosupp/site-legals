@@ -46,13 +46,14 @@ class SiteLegalsServiceProvider extends ServiceProvider
                 ], 'sitelegals-migrations');
 
             }
-
-            // Artisan commands
-            $this->commands([
-                InstallSiteLegals::class,
-                SeedDefaultData::class,
-            ]);
         }
+        
+        // Artisan commands
+        $this->commands([
+            InstallSiteLegals::class,
+            SeedDefaultData::class,
+        ]);
+ 
     }
 
     protected function routeConfiguration()
