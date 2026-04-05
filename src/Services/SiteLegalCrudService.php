@@ -41,7 +41,12 @@ class SiteLegalCrudService implements Crudable
 
     public function makeMany(array $data)
     {
-        return SiteLegal::upsert($data, []);
+        // dd($data);
+        return SiteLegal::upsert(
+            $data,
+            ['page_name', 'slug'],
+            []
+        );
     }
 
     public function one(int|string $id): SiteLegal|null
